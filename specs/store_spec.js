@@ -25,6 +25,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Part A
 // Create a Record Store that has a Name, City and an Inventory.
+// Give the Record Store a Balance.
+// Add some Records to the Store's Inventory.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
 var Store = require('../store.js')
@@ -34,7 +36,7 @@ describe ('Store', function() {
   let store;
 
   beforeEach(function(){
-    store= new Store("Alan's Record Boudoir", "Glasgow");
+    store= new Store("Alan's Record Boudoir", "Glasgow", 100);
   });
 
   it('has a Name', function(){
@@ -48,6 +50,10 @@ describe ('Store', function() {
   it('has an Inventory', function(){
     assert.strictEqual(store.inventory.length, 0);
     assert.deepStrictEqual(store.inventory, []);
+  });
+
+  it('has a Balance', function(){
+    assert.strictEqual(store.balance, 100);
   });
 
 });
