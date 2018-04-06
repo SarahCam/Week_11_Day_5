@@ -27,6 +27,8 @@
 // Create a Record Store that has a Name, City and an Inventory.
 // Give the Record Store a Balance.
 // Add some Records to the Store's Inventory.
+// Part B
+// Create a method that lists the inventory.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
 var Store = require('../store.js')
@@ -72,6 +74,14 @@ describe ('Store', function() {
     store.addRecord(record3);
     assert.strictEqual(store.inventory.length, 3);
     assert.deepStrictEqual(store.inventory, [record1, record2, record3]);
+  });
+
+  it('can list the inventory', function(){
+    store.addRecord(record1);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    console.log(store.listInventory());
+    assert.strictEqual(store.listInventory(), 'Lana Del Ray Summertime Sadness Pop 10\nLana Del Ray High by the Beach Pop 10\nLana Del Ray Born to Die Pop 10\n');
   });
 
 });
