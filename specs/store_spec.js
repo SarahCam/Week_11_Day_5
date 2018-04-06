@@ -30,13 +30,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
 var Store = require('../store.js')
+var Record = require('../record.js')
 
 describe ('Store', function() {
 
-  let store;
+  let store, record1;
 
   beforeEach(function(){
     store= new Store("Alan's Record Boudoir", "Glasgow", 100);
+    record1 = new Record('Lana Del Ray', 'Summertime Sadness', 'Pop', 10);
   });
 
   it('has a Name', function(){
@@ -54,6 +56,12 @@ describe ('Store', function() {
 
   it('has a Balance', function(){
     assert.strictEqual(store.balance, 100);
+  });
+
+  it('can add a Record to the store Inventory', function(){
+    store.addRecord(record1);
+    assert.strictEqual(store.inventory.length, 1);
+    assert.deepStrictEqual(store.inventory, [record1]);
   });
 
 });
