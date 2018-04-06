@@ -39,6 +39,8 @@ describe ('Store', function() {
   beforeEach(function(){
     store= new Store("Alan's Record Boudoir", "Glasgow", 100);
     record1 = new Record('Lana Del Ray', 'Summertime Sadness', 'Pop', 10);
+    record2 = new Record('Lana Del Ray', 'High by the Beach', 'Pop', 10);
+    record3 = new Record('Lana Del Ray', 'Born to Die', 'Pop', 10);
   });
 
   it('has a Name', function(){
@@ -62,6 +64,14 @@ describe ('Store', function() {
     store.addRecord(record1);
     assert.strictEqual(store.inventory.length, 1);
     assert.deepStrictEqual(store.inventory, [record1]);
+  });
+
+  it('can add several records to the store Inventory', function(){
+    store.addRecord(record1);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    assert.strictEqual(store.inventory.length, 3);
+    assert.deepStrictEqual(store.inventory, [record1, record2, record3]);
   });
 
 });
