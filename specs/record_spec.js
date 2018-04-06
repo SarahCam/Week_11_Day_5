@@ -25,7 +25,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Part A
 // Create a Record object that has an Artist, Title, Genre, and Price
+// Part B
+// Create a method that prints out the Record's properties as a string.
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
 var assert = require('assert');
 var Record = require('../record.js')
 
@@ -51,6 +54,10 @@ describe ('Record', function() {
 
   it('has a Price', function(){
     assert.strictEqual(record1.price, 10);
+  });
+
+  it('can print (return) all Record Properties as a string', function(){
+    assert.strictEqual(record1.printDetails(), 'Lana Del Ray Summertime Sadness Pop 10');
   });
 
 });
