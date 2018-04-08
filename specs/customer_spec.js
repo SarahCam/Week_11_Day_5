@@ -17,7 +17,7 @@ var Record = require('../record.js');
 
 describe ('Customer', function() {
 
-  let customer1, store, record1, record2, record3, record4, record5, record6;
+  let customer1, store, record1, record2, record3, record4, record5, record6, customer2;
 
   beforeEach(function(){
     customer1 = new Customer(40);
@@ -33,6 +33,7 @@ describe ('Customer', function() {
     store.addRecord(record3);
     store.addRecord(record4);
     store.addRecord(record5);
+    customer2 = new Customer(60);
   });
 
   it('has cash', function(){
@@ -102,8 +103,23 @@ describe ('Customer', function() {
     assert.deepStrictEqual(customer1.orderCollection('desc'), [record4, record5, record2]);
   });
 
-  xit('can compare the value of their collection with another record collector', function(){
+  it('can compare the value of their collection with another record collector', function(){
+    customer1.addRecord(record2);     // value 10
+    customer1.addRecord(record4);     // value 20
+    customer2.addRecord(record1);     // value 10
+    customer2.addRecord(record5);     // value 15
+    assert.strictEqual(customer1.compare(customer2), "You have the most valuable collection");
+    assert.strictEqual(customer2.compare(customer1), "You do not have the most valuable collection");
+  });
 
+  it('can compare the value of their collection with another record collector - both are equal', function(){
+    customer1.addRecord(record2);     // value 10
+    customer1.addRecord(record4);     // value 20
+    customer2.addRecord(record1);     // value 10
+    customer2.addRecord(record3);     // value 10
+    customer2.addRecord(record6);     // value 10
+    assert.strictEqual(customer1.compare(customer2), "Your collections are of equal value");
+    assert.strictEqual(customer2.compare(customer1), "Your collections are of equal value");
   });
 
 });

@@ -55,4 +55,14 @@ Customer.prototype.orderCollection = function (order) {
   return _.orderBy(this.collection, ['price'], [order]);
 };
 
+Customer.prototype.compare = function (customer) {
+  if(this.collectionValue() > customer.collectionValue()){
+    return "You have the most valuable collection";
+  }else if(this.collectionValue() === customer.collectionValue()){
+    return "Your collections are of equal value";
+  }else{
+    return "You do not have the most valuable collection";
+  }
+};
+
 module.exports = Customer;
