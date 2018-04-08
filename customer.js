@@ -23,4 +23,12 @@ Customer.prototype.sellRecord = function (record, store) {
   store.buyRecord(record);
 };
 
+Customer.prototype.collectionValue = function () {
+  let total = 0;
+  for(record of this.collection){
+    total += record.price;
+  };
+  return total;
+};
+
 module.exports = Customer;

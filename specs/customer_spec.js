@@ -71,8 +71,11 @@ describe ('Customer', function() {
     assert.strictEqual(customer1.cash, 5);
   });
 
-  xit('can view total value of customer collection', function(){
-
+  it('can view total value of customer collection', function(){
+    customer1.addRecord(record1);
+    customer1.addRecord(record2);
+    customer1.addRecord(record3);
+    assert.strictEqual(customer1.collectionValue(), 30);
   });
 
   xit('can view total value of all records in customer collection of a given Genre', function(){
