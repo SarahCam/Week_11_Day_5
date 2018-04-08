@@ -31,6 +31,9 @@
 // Create a method that lists the inventory.
 // Create a method so the Record Store can sell a Record and adjusts the Store's
 // balance to account for the Record being sold.
+// Create a method that reports the financial situation of the Store, showing the
+// balance and value of inventory.
+// Create a method that allows the store to view all Records of a given Genre.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
 var Store = require('../store.js')
@@ -93,6 +96,19 @@ describe ('Store', function() {
     assert.strictEqual(store.inventory.length, 2);
     assert.deepStrictEqual(store.inventory, [record2, record3]);
     assert.strictEqual(store.balance, 110);
+  });
+
+  it('can report the financial situation (worth) of the Store, showing the balance and value of inventory', function(){
+    store.addRecord(record1);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    assert.strictEqual(store.balance, 100);
+    assert.strictEqual(store.assetValue(), 30);
+    assert.strictEqual(store.totalValue(), 130);
+  });
+
+  xit('can view all Records of a given Genre', function(){
+
   });
 
 });

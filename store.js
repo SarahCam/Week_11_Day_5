@@ -26,4 +26,16 @@ Store.prototype.sellRecord = function (record) {
   this.balance += record.price;
 };
 
+Store.prototype.assetValue = function () {
+  let assetValue = 0;
+  for(record of this.inventory){
+    assetValue += record.price;
+  };
+  return assetValue;
+};
+
+Store.prototype.totalValue = function () {
+  return this.balance + this.assetValue();
+};
+
 module.exports = Store;
