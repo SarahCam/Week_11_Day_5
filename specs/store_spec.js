@@ -36,12 +36,12 @@
 // Create a method that allows the store to view all Records of a given Genre.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
-var Store = require('../store.js')
-var Record = require('../record.js')
+var Store = require('../store.js');
+var Record = require('../record.js');
 
 describe ('Store', function() {
 
-  let store, record1;
+  let store, record1, record2, record3, record4, record5;
 
   beforeEach(function(){
     store= new Store("Alan's Record Boudoir", "Glasgow", 100);
