@@ -12,13 +12,15 @@
 
 var assert = require('assert');
 var Customer = require('../customer.js');
+var Store = require('../store.js');
+var Record = require('../record.js');
 
 describe ('Customer', function() {
 
-  let customer, store, record1, record2, record3, record4, record5;
+  let customer1, store, record1, record2, record3, record4, record5;
 
   beforeEach(function(){
-    customer = new Customer(200);
+    customer1 = new Customer(200);
     store= new Store("Alan's Record Boudoir", "Glasgow", 100);
     record1 = new Record('Lana Del Ray', 'Summertime Sadness', 'Pop', 10);
     record2 = new Record('Lana Del Ray', 'High by the Beach', 'Pop', 10);
@@ -32,8 +34,8 @@ describe ('Customer', function() {
     store.addRecord(record5);
   });
 
-  xit('has cash', function(){
-
+  it('has cash', function(){
+    assert.strictEqual(customer1.cash, 200);
   });
 
   xit('can buy record and add it to customer collection/remove it from store which decreases customer cash/increases store balance', function(){
