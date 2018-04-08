@@ -57,7 +57,7 @@ describe ('Record', function() {
   });
 
   it('can print (return) all Record Properties as a string', function(){
-    assert.strictEqual(record1.printDetails(), 'Lana Del Ray Summertime Sadness Pop 10');
+    assert.strictEqual(record1.printDetails(), 'Lana Del Ray, Summertime Sadness, Pop, £10');
   });
 
 });

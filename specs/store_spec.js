@@ -29,6 +29,8 @@
 // Add some Records to the Store's Inventory.
 // Part B
 // Create a method that lists the inventory.
+// Create a method so the Record Store can sell a Record and adjusts the Store's
+// balance to account for the Record being sold.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 var assert = require('assert');
 var Store = require('../store.js')
@@ -80,8 +82,17 @@ describe ('Store', function() {
     store.addRecord(record1);
     store.addRecord(record2);
     store.addRecord(record3);
-    console.log(store.listInventory());
-    assert.strictEqual(store.listInventory(), 'Lana Del Ray Summertime Sadness Pop 10\nLana Del Ray High by the Beach Pop 10\nLana Del Ray Born to Die Pop 10\n');
+    assert.strictEqual(store.listInventory(), 'Lana Del Ray, Summertime Sadness, Pop, £10\nLana Del Ray, High by the Beach, Pop, £10\nLana Del Ray, Born to Die, Pop, £10\n');
+  });
+
+  it('can sell a Record and adjust the Stores balance to account for the Record being sold', function(){
+    store.addRecord(record1);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    store.sellRecord(record1);
+    assert.strictEqual(store.inventory.length, 2);
+    assert.deepStrictEqual(store.inventory, [record2, record3]);
+    assert.strictEqual(store.balance, 110);
   });
 
 });

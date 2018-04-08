@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 const Store = function(name, city, balance) {
   this.name = name;
   this.city = city;
@@ -15,6 +17,13 @@ Store.prototype.listInventory = function () {
     list += record.printDetails() + "\n";
   }
   return list;
+};
+
+Store.prototype.sellRecord = function (record) {
+  // Both lodash options work and will mutate the original array:
+  _.pull(this.inventory, record);
+  // _.remove(this.inventory, record);
+  this.balance += record.price;
 };
 
 module.exports = Store;

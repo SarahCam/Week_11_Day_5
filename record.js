@@ -6,7 +6,7 @@ const Record = function(artist, title, genre, price) {
 };
 
 Record.prototype.printDetails = function () {
-  let details = this.artist + " " + this.title + " " + this.genre + " " + this.price;
+  let details = this.artist + ", " + this.title + ", " + this.genre + ", £" + this.price;
   return details;
 };
 
