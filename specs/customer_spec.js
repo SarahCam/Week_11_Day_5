@@ -86,8 +86,11 @@ describe ('Customer', function() {
     assert.strictEqual(customer1.collectionValue('Classical'), 20);
   });
 
-  xit('can view most valuable record in their collection', function(){
-
+  it('can view most valuable record in their collection', function(){
+    customer1.addRecord(record1);
+    customer1.addRecord(record2);
+    customer1.addRecord(record4);
+    assert.deepStrictEqual(customer1.mostValuableRecord(), record4);
   });
 
   xit('can sort records in collection by value, ascending or descending', function(){

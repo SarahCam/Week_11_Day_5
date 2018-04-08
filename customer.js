@@ -38,4 +38,14 @@ Customer.prototype.collectionValue = function (genre) {
   return total;
 };
 
+Customer.prototype.mostValuableRecord = function () {
+  let valuableRecord = this.collection[0];
+  for(record of this.collection){
+    if(record.price > valuableRecord.price){
+      valuableRecord = record;
+    };
+  };
+  return valuableRecord;
+};
+
 module.exports = Customer;
