@@ -20,7 +20,7 @@ describe ('Customer', function() {
   let customer1, store, record1, record2, record3, record4, record5;
 
   beforeEach(function(){
-    customer1 = new Customer(200);
+    customer1 = new Customer(40);
     store= new Store("Alan's Record Boudoir", "Glasgow", 100);
     record1 = new Record('Lana Del Ray', 'Summertime Sadness', 'Pop', 10);
     record2 = new Record('Lana Del Ray', 'High by the Beach', 'Pop', 10);
@@ -35,11 +35,15 @@ describe ('Customer', function() {
   });
 
   it('has cash', function(){
-    assert.strictEqual(customer1.cash, 200);
+    assert.strictEqual(customer1.cash, 40);
   });
 
-  xit('can buy record and add it to customer collection/remove it from store which decreases customer cash/increases store balance', function(){
-
+  it('can buy record and add it to customer collection/remove it from store which decreases customer cash/increases store balance', function(){
+    customer1.buyRecord(record1, store);
+    assert.deepStrictEqual(customer1.collection, [record1]);
+    assert.deepStrictEqual(store.inventory, [record2, record3, record4, record5]);
+    assert.strictEqual(customer1.cash, 30);
+    assert.strictEqual(store.balance, 110);
   });
 
   xit('can sell record and remove it from customer collection/add it to store, which increases customer cash/decreases store balance', function(){
