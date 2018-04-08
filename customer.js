@@ -10,9 +10,11 @@ Customer.prototype.addRecord = function (record) {
 };
 
 Customer.prototype.buyRecord = function (record, store) {
-  store.sellRecord(record);
-  this.collection.push(record);
-  this.cash -= record.price;
+  if(this.cash >= record.price){
+    store.sellRecord(record);
+    this.collection.push(record);
+    this.cash -= record.price;
+  }
 };
 
 Customer.prototype.sellRecord = function (record, store) {

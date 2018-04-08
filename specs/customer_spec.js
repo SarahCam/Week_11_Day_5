@@ -61,8 +61,14 @@ describe ('Customer', function() {
     assert.strictEqual(store.balance, 90);
   });
 
-  xit('cannot buy record if customer does not have enough cash', function(){
-
+  it('cannot buy record if customer does not have enough cash', function(){
+    customer1.cash = 15;
+    customer1.buyRecord(record1, store);
+    assert.deepStrictEqual(customer1.collection, [record1]);
+    assert.strictEqual(customer1.cash, 5);
+    customer1.buyRecord(record2, store);
+    assert.deepStrictEqual(customer1.collection, [record1]);
+    assert.strictEqual(customer1.cash, 5);
   });
 
   xit('can view total value of customer collection', function(){
