@@ -52,9 +52,13 @@ describe ('Customer', function() {
     assert.deepStrictEqual(customer1.collection, [record6]);
   });
 
-  xit('can sell record and remove it from customer collection/add it to store, which increases customer cash/decreases store balance', function(){
+  it('can sell record and remove it from customer collection/add it to store, which increases customer cash/decreases store balance', function(){
     customer1.addRecord(record6);
-
+    customer1.sellRecord(record6, store);
+    assert.deepStrictEqual(customer1.collection, []);
+    assert.deepStrictEqual(store.inventory, [record1, record2, record3, record4, record5, record6]);
+    assert.strictEqual(customer1.cash, 50);
+    assert.strictEqual(store.balance, 90);
   });
 
   xit('cannot buy record if customer does not have enough cash', function(){

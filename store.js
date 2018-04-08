@@ -33,6 +33,11 @@ Store.prototype.sellRecord = function (record) {
   this.balance += record.price;
 };
 
+Store.prototype.buyRecord = function (record) {
+  this.inventory.push(record);
+  this.balance -= record.price;
+};
+
 Store.prototype.assetValue = function () {
   let assetValue = 0;
   for(record of this.inventory){

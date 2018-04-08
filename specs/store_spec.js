@@ -100,6 +100,13 @@ describe ('Store', function() {
     assert.strictEqual(store.balance, 110);
   });
 
+  it('can buy a Record and adjust the Stores balance to pay for the Record', function(){
+    store.buyRecord(record4);
+    assert.strictEqual(store.inventory.length, 1);
+    assert.deepStrictEqual(store.inventory, [record4]);
+    assert.strictEqual(store.balance, 80);
+  });
+
   it('can report the financial situation (worth) of the Store, showing the balance and value of inventory', function(){
     store.addRecord(record1);
     store.addRecord(record2);

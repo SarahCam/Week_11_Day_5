@@ -15,4 +15,10 @@ Customer.prototype.buyRecord = function (record, store) {
   this.cash -= record.price;
 };
 
+Customer.prototype.sellRecord = function (record, store) {
+  _.remove(this.collection, record);
+  this.cash += record.price;
+  store.buyRecord(record);
+};
+
 module.exports = Customer;
