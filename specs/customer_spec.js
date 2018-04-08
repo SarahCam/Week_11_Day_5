@@ -78,8 +78,12 @@ describe ('Customer', function() {
     assert.strictEqual(customer1.collectionValue(), 30);
   });
 
-  xit('can view total value of all records in customer collection of a given Genre', function(){
-
+  it('can view total value of all records in customer collection of a given Genre', function(){
+    customer1.addRecord(record1);
+    customer1.addRecord(record2);
+    customer1.addRecord(record4);
+    assert.strictEqual(customer1.collectionValue('Pop'), 20);
+    assert.strictEqual(customer1.collectionValue('Classical'), 20);
   });
 
   xit('can view most valuable record in their collection', function(){
