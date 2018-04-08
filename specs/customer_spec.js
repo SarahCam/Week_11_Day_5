@@ -17,7 +17,7 @@ var Record = require('../record.js');
 
 describe ('Customer', function() {
 
-  let customer1, store, record1, record2, record3, record4, record5;
+  let customer1, store, record1, record2, record3, record4, record5, record6;
 
   beforeEach(function(){
     customer1 = new Customer(40);
@@ -27,6 +27,7 @@ describe ('Customer', function() {
     record3 = new Record('Lana Del Ray', 'Born to Die', 'Pop', 10);
     record4 = new Record('Mozart', 'Requiem', 'Classical', 20);
     record5 = new Record('Beethoven', 'Fur Elise', 'Classical', 15);
+    record6 = new Record('Madonna', 'Broken', 'Pop', 10);
     store.addRecord(record1);
     store.addRecord(record2);
     store.addRecord(record3);
@@ -46,7 +47,13 @@ describe ('Customer', function() {
     assert.strictEqual(store.balance, 110);
   });
 
+  it('can add record to collection, without buying it from the store', function(){
+    customer1.addRecord(record6);
+    assert.deepStrictEqual(customer1.collection, [record6]);
+  });
+
   xit('can sell record and remove it from customer collection/add it to store, which increases customer cash/decreases store balance', function(){
+    customer1.addRecord(record6);
 
   });
 

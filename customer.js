@@ -5,6 +5,10 @@ const Customer = function(cash) {
   this.collection = [];
 };
 
+Customer.prototype.addRecord = function (record) {
+  this.collection.push(record);
+};
+
 Customer.prototype.buyRecord = function (record, store) {
   store.sellRecord(record);
   this.collection.push(record);
