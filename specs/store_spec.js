@@ -48,6 +48,8 @@ describe ('Store', function() {
     record1 = new Record('Lana Del Ray', 'Summertime Sadness', 'Pop', 10);
     record2 = new Record('Lana Del Ray', 'High by the Beach', 'Pop', 10);
     record3 = new Record('Lana Del Ray', 'Born to Die', 'Pop', 10);
+    record4 = new Record('Mozart', 'Requiem', 'Classical', 20);
+    record5 = new Record('Beethoven', 'Fur Elise', 'Classical', 15);
   });
 
   it('has a Name', function(){
@@ -107,8 +109,13 @@ describe ('Store', function() {
     assert.strictEqual(store.totalValue(), 130);
   });
 
-  xit('can view all Records of a given Genre', function(){
-
+  it('can view all Records of a given Genre', function(){
+    store.addRecord(record1);
+    store.addRecord(record2);
+    store.addRecord(record3);
+    store.addRecord(record4);
+    store.addRecord(record5);
+    assert.strictEqual(store.listInventory('Classical'), 'Mozart, Requiem, Classical, £20\nBeethoven, Fur Elise, Classical, £15\n');
   });
 
 });

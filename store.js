@@ -11,11 +11,18 @@ Store.prototype.addRecord = function (record) {
   this.inventory.push(record);
 };
 
-Store.prototype.listInventory = function () {
+Store.prototype.listInventory = function (genre) {
   let list = "";
-  for(record of this.inventory){
-    list += record.printDetails() + "\n";
+  let filteredInventory = [];
+  if(genre){
+    filteredInventory = _.filter(this.inventory, ['genre', genre]);
   }
+  else{
+    filteredInventory  = this.inventory;
+  };
+  for(record of filteredInventory){
+    list += record.printDetails() + "\n";
+  };
   return list;
 };
 
