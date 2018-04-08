@@ -48,4 +48,11 @@ Customer.prototype.mostValuableRecord = function () {
   return valuableRecord;
 };
 
+Customer.prototype.orderCollection = function (order) {
+  if(order === null){
+    order = 'asc';
+  }
+  return _.orderBy(this.collection, ['price'], [order]);
+};
+
 module.exports = Customer;

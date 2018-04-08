@@ -93,8 +93,13 @@ describe ('Customer', function() {
     assert.deepStrictEqual(customer1.mostValuableRecord(), record4);
   });
 
-  xit('can sort records in collection by value, ascending or descending', function(){
-
+  it('can sort records in collection by value, ascending or descending', function(){
+    customer1.addRecord(record2);     // value 10
+    customer1.addRecord(record4);     // value 20
+    customer1.addRecord(record5);     // value 15
+    assert.deepStrictEqual(customer1.orderCollection(), [record2, record5, record4]);
+    assert.deepStrictEqual(customer1.orderCollection('asc'), [record2, record5, record4]);
+    assert.deepStrictEqual(customer1.orderCollection('desc'), [record4, record5, record2]);
   });
 
   xit('can compare the value of their collection with another record collector', function(){
